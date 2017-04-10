@@ -15,8 +15,7 @@ let redirectTo (store : Dictionary<string, string>) (url : string) : WebPart =
 let returnShortenedUrl (store : Dictionary<string,string>) (url : string) : WebPart =
     let shortenedUrl = Url.shorten url
     if store.ContainsKey(shortenedUrl) = false then  
-        let success = store.Add(shortenedUrl, url)
-        printfn "%A" success
+        store.Add(shortenedUrl, url)
     OK (sprintf "localhost:8080/%s" shortenedUrl)
 
 [<EntryPoint>]
