@@ -12,4 +12,5 @@ let createHashFunction () =
        hash.ComputeHash(Encoding.Default.GetBytes(url)).[..4]
     sha256 |> getHash
 
-let shorten url = createHashFunction () url |> Base62.toBase62
+let hashUrl = createHashFunction ()
+let shorten url = hashUrl url |> Base62.toBase62
